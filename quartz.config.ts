@@ -67,6 +67,7 @@ const config: QuartzConfig = {
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+      Plugin.CrawlDependencies({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
     ],
     filters: [Plugin.RemoveDrafts()],
