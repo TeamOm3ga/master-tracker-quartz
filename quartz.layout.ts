@@ -27,7 +27,17 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer({ folderClickBehavior: "link" })),
+    Component.DesktopOnly(Component.Explorer({
+      folderClickBehavior: "link",
+      sortFn(a, b) {
+        // numeric: true: Whether numeric collation should be used, such that "1" < "2" < "10"
+        // sensitivity: "base": Only strings that differ in base letters compare as unequal. Examples: a ≠ b, a = á, a = A
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+    })),
   ],
   right: [
     Component.Graph({
@@ -51,7 +61,17 @@ export const defaultListPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer({ folderClickBehavior: "link" })),
+    Component.DesktopOnly(Component.Explorer({
+      folderClickBehavior: "link",
+      sortFn(a, b) {
+        // numeric: true: Whether numeric collation should be used, such that "1" < "2" < "10"
+        // sensitivity: "base": Only strings that differ in base letters compare as unequal. Examples: a ≠ b, a = á, a = A
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+    })),
   ],
   right: [
     Component.Graph({
