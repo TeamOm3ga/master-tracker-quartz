@@ -8,8 +8,8 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/TeamOm3ga",
+      Twitter: "https://twitter.com/WeBrokeOlega",
     },
   }),
 }
@@ -28,6 +28,7 @@ export const defaultContentPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
+<<<<<<< HEAD
     Component.Flex({
       components: [
         {
@@ -38,9 +39,25 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer(),
+||||||| parent of 148d35b (add dependency support)
+    Component.Search(),
+    Component.Darkmode(),
+    Component.DesktopOnly(Component.Explorer()),
+=======
+    Component.Search(),
+    Component.Darkmode(),
+    Component.DesktopOnly(Component.Explorer({ folderClickBehavior: "link" })),
+>>>>>>> 148d35b (add dependency support)
   ],
   right: [
-    Component.Graph(),
+    Component.Graph({
+      localGraph: {
+        showTags: false
+      },
+      globalGraph: {
+        showTags: false
+      }
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
@@ -52,16 +69,20 @@ export const defaultListPageLayout: PageLayout = {
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
-    }),
-    Component.Explorer(),
+    Component.Search(),
+    Component.Darkmode(),
+    Component.DesktopOnly(Component.Explorer({ folderClickBehavior: "link" })),
   ],
-  right: [],
+  right: [
+    Component.Graph({
+      localGraph: {
+        showTags: false
+      },
+      globalGraph: {
+        showTags: false
+      }
+    }),
+    Component.DesktopOnly(Component.TableOfContents()),
+    Component.Backlinks(),
+  ],
 }

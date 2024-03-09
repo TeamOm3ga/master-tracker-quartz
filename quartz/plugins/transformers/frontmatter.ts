@@ -118,6 +118,9 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
             const uniqueSlugs = [...new Set(allSlugs)]
             allSlugs.splice(0, allSlugs.length, ...uniqueSlugs)
 
+            const before = coerceToArray(coalesceAliases(data, ["before", "deps"]))
+            if (before) data.before = before.map((link) => link.startsWith('[[') ? link.slice(2, -2) : link)
+
             // fill in frontmatter
             file.data.frontmatter = data as QuartzPluginData["frontmatter"]
           }
@@ -147,6 +150,7 @@ declare module "vfile" {
         cssclasses: string[]
         socialImage: string
         comments: boolean | string
+        before: string[]
       }>
   }
 }
