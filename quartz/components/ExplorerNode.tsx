@@ -168,10 +168,8 @@ export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodePro
   const isDefaultOpen = opts.folderDefaultState === "open"
 
   // Calculate current folderPath
-  let folderPath = ""
-  if (node.name !== "") {
-    folderPath = joinSegments(fullPath ?? "", node.name)
-  }
+  const folderPath = node.name !== "" ? joinSegments(fullPath ?? "", node.name) : ""
+  const href = resolveRelative(fileData.slug!, folderPath as SimpleSlug) + "/"
 
   return (
     <>
